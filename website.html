@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styling.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKU-Updation</title>
+    </head>
+<body>
+    <div class="header">
+        
+        <img class="logo" src="zesteq_logo.png" alt="logo" class="logo">
+        <h1 class="top_head1">SHEMEKA INDUSTRIES PRIVATE LIMITED<br>Inventory Management System</h1> 
+    </div>
+    <br><br>
+    <body>
+    <div class="upper-half" id="upperHalf">
+
+        <div class="container">
+            <button onclick="showAddSKUForm()">ADD SKU</button>
+            <button onclick="showUpdateSKUForm()">UPDATE SKU</button>
+            <button onclick="showDeleteSKUForm()">DELETE SKU</button>
+    
+            <div id="addSKUForm" style="display:none;">
+                <h2>Add SKU</h2>
+                <label for="skuCode">SKU Code:</label>
+                <input type="text" id="skuCode">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity">
+                <label for="binNumber">Bin Number:</label>
+                <input type="text" id="binNumber">
+                <button onclick="addSKU()">Add SKU</button>
+
+                <div id="successMessage" style="display: none;"></div>
+                <div id="warningMessage" style="display: none;"></div>  
+            </div>
+    
+            <!-- Simplified HTML for the UPDATE SKU section -->
+            <div id="updateSKUForm" style="display:none;">
+                <h2>Update SKU</h2>
+                <label for="updateSkuCode">Enter SKU Code:</label>
+                <input type="text" id="updateSkuCode">
+                <button onclick="fetchAndUpdateSKU()">Fetch SKU</button>
+                <div id="warningMessage" style="color: red;"></div>
+
+                <!-- Display Quantity and Bin Number -->
+                <div id="updateSKUInfo" style="display:none;">
+                    <label for="updateQuantity">Quantity Present</label>
+                    <input type="number" id="updateQuantity" readonly>
+                
+                    <label for="stockIn">Stock In:</label>
+                    <input type="number" id="stockIn" placeholder="Enter Stock In">
+                
+                    <label for="stockOut">Stock Out:</label>
+                    <input type="number" id="stockOut" placeholder="Enter Stock Out">
+                
+                    <label for="updateBinNumber">Bin Number:</label>
+                    <input type="text" id="updateBinNumber">
+                </div>
+
+                <!-- Warning Message -->
+                <div id="warningMessage" style="color: red;"></div>
+                <br>
+                <button onclick="updateSKU()">Update SKU</button>
+            </div>
+
+
+            <!-- Update the HTML for the DELETE SKU section -->
+            <div id="deleteSKUForm" style="display:none;">
+                <h2>Delete SKU</h2>
+                <label for="deleteSkuCode">Enter SKU Code:</label>
+                <input type="text" id="deleteSkuCode">
+                <button class= "delete_btn" onclick="confirmDeleteSKU()">Delete SKU</button>
+                <div id="warningMessage" style="display: none;"></div>
+
+                <!-- Confirmation Message -->
+                <div id="confirmationMessage" style="display:none;">
+                    <p id="confirmationText"></p>
+                    <button onclick="confirmDelete()">Confirm Delete</button>
+                    <div id="successMessage" style="display: none;"></div>
+                    <button onclick="cancelDelete()">Cancel</button>
+                </div>
+            
+        </div>
+    </div>
+    <div class="lower-half" id="lowerHalf">
+        <div>
+            <h2>Inventory</h2>
+            <input type="text" id="searchSkuCode" placeholder="Enter SKU Code">
+            <button onclick="searchInventory()">Search</button>
+            <div id="searchResult"></div>
+            <!-- Display the SKU data table here -->
+            <br>
+        </div>
+
+        <div id="InventoryTable">
+            <button id="showInventoryButton" onclick="showInventory()">Show FULL Inventory -></button>
+        </div>
+        <br>    
+    <script src="script.js"></script>
+</body>
+</html>

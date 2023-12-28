@@ -1,0 +1,143 @@
+.logo{
+    position: absolute; 
+    top: 6%; 
+    left: 4%; 
+    transform: translate(-50%, -50%);
+    width: 70px
+}
+body {
+  background-image: url("https://getwallpapers.com/wallpaper/full/5/4/1/1448982-blue-background-image-2543x1553-for-hd.jpg");
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-size: cover; /* Stretch image to cover entire page */
+  background-position: center; /* Center the image */
+    background-attachment: fixed;
+}
+
+.top_head1{
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0px;
+    position: relative;
+    text-decoration: underline;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #3c963f;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+.delete_btn{
+    background-color: #f44336;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+.delete_btn:hover {
+    background-color: #910b0b;
+}
+button:hover {
+    background-color: #308234;
+}
+
+#skuList {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+}
+.history-container {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.history-container h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Add or modify the following styles for upper and lower halves */
+
+.upper-half {
+    padding: 20px;
+    border-top: 2px solid;
+}
+.upper-half button {
+    margin-right: 5px; /* Adjust the value as needed */
+}
+
+.lower-half {
+    padding: 20px;
+}
+.lower-half button {
+    margin-right: 5px; /* Adjust the value as needed */
+}
+
+/* Add or modify the following styles to create a bordered table in the Inventory section */
+
+.lower-half table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: white;
+}
+
+.lower-half th, .lower-half td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.lower-half th {
+    background-color: #f2f2f2;
+}
+
+/* Add or modify the following styles for confirmation message and buttons */
+
+#confirmationMessage {
+    display: none;
+    margin-top: 7px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    color: white;
+}
+
+#confirmationText {
+    margin-bottom: 10px;
+}
+
+#confirmationMessage button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+}
+
+#confirmationMessage button:hover {
+    background-color: #f44336;
+}
+
+
+
