@@ -7,6 +7,7 @@ The task was to create a website (private server) where they could add SKU's, Qu
 <img width="1440" alt="image" src="https://github.com/AnirudhG07/Inventory-Updation-Website/assets/146579014/b3c3959d-abfe-435c-a62a-d91c07078f84">
 
 They can update, add, delete SKU item's and can access it according to their need. <br> 
-This website is can be used as data management system for various purposes.
+
+This website is can be used for various purposes such as data management system, profile maker(with more use of CSS), etc.
 
 <h2> JavaScript, HTML, CSS based website</h2>
