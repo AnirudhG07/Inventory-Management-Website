@@ -1,9 +1,9 @@
 .logo{
     position: absolute; 
-    top: 6%; 
-    left: 4%; 
+    top: 9%; 
+    left: 5%; 
     transform: translate(-50%, -50%);
-    width: 70px
+    width: 120px
 }
 body {
   background-image: url("https://getwallpapers.com/wallpaper/full/5/4/1/1448982-blue-background-image-2543x1553-for-hd.jpg");
@@ -11,6 +11,13 @@ body {
   background-size: cover; /* Stretch image to cover entire page */
   background-position: center; /* Center the image */
     background-attachment: fixed;
+}
+.toggleSection {
+    display: none;
+}
+
+.toggleSection.active {
+    display: block;
 }
 
 .top_head1{
@@ -65,20 +72,6 @@ button:hover {
     border-top: 1px solid #ccc;
     margin-top: 20px;
 }
-.history-container {
-    max-height: 200px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 20px;
-}
-
-.history-container h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-/* Add or modify the following styles for upper and lower halves */
 
 .upper-half {
     padding: 20px;
@@ -138,6 +131,53 @@ button:hover {
 #confirmationMessage button:hover {
     background-color: #f44336;
 }
+.inputBar{
+    width: 40%;
+    margin-bottom: 10px;
+    /* i want circular border */
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.securitybtn{
+    color: white;
+    width: 10%;
+}
+.security_msg{
+    border-top: 2px solid black;
+    color: rgb(58, 8, 8);
+    padding: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/* Add this style to your existing CSS file or create a new one */
+/* Add styles for the Order List */
+#orderPortal {
+    margin-top: 20px;
+}
 
+#orderTableContainer {
+    border: 1px solid #bcbcbc;
+    border-radius: 5px;
+    overflow-y: auto; 
+    max-height: 300px;
+    margin-top: 10px;
+}
 
+#orderTable {
+    border-collapse: collapse;
+    background-color: white;
+    width: 100%;
+}
 
+#orderTable th, #orderTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#orderTable th {
+    background-color: #efefef;
+}
