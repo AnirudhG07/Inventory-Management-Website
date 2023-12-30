@@ -6,29 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SKU-Updation</title>
     </head>
-<body>
+    <body>
     <div class="header">
-        
-        <img class="logo" src="zesteq_logo.png" alt="logo" class="logo">
+        <img class="logo" src="zesteq_logo.png" alt="logo">
         <h1 class="top_head1">SHEMEKA INDUSTRIES PRIVATE LIMITED<br>Inventory Management System</h1> 
     </div>
     <br><br>
-    <body>
     <div class="upper-half" id="upperHalf">
 
         <div class="container">
             <button onclick="showAddSKUForm()">ADD SKU</button>
             <button onclick="showUpdateSKUForm()">UPDATE SKU</button>
             <button onclick="showDeleteSKUForm()">DELETE SKU</button>
-    
-            <div id="addSKUForm" style="display:none;">
+            <button onclick="openOrderPortal()">ORDER PORTAL</button>
+
+            <div class="inputBar" id="addSKUForm" style="display:none;">
                 <h2>Add SKU</h2>
                 <label for="skuCode">SKU Code:</label>
-                <input type="text" id="skuCode">
+                <input type="text" id="skuCode" placeholder="Enter SKU Code">
                 <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity">
+                <input type="number" id="quantity" placeholder="Enter Quantity">
                 <label for="binNumber">Bin Number:</label>
-                <input type="text" id="binNumber">
+                <input type="text" id="binNumber" placeholder="Enter Bin Number">
                 <button onclick="addSKU()">Add SKU</button>
 
                 <div id="successMessage" style="display: none;"></div>
@@ -36,15 +35,15 @@
             </div>
     
             <!-- Simplified HTML for the UPDATE SKU section -->
-            <div id="updateSKUForm" style="display:none;">
+            <div class="inputBar" id="updateSKUForm" style="display:none;">
                 <h2>Update SKU</h2>
                 <label for="updateSkuCode">Enter SKU Code:</label>
-                <input type="text" id="updateSkuCode">
+                <input type="text" id="updateSkuCode" placeholder="Enter SKU Code">
                 <button onclick="fetchAndUpdateSKU()">Fetch SKU</button>
                 <div id="warningMessage" style="color: red;"></div>
 
                 <!-- Display Quantity and Bin Number -->
-                <div id="updateSKUInfo" style="display:none;">
+                <div class="inputBar" id="updateSKUInfo" style="display:none;">
                     <label for="updateQuantity">Quantity Present</label>
                     <input type="number" id="updateQuantity" readonly>
                 
@@ -66,11 +65,11 @@
 
 
             <!-- Update the HTML for the DELETE SKU section -->
-            <div id="deleteSKUForm" style="display:none;">
+            <div class="inputBar" id="deleteSKUForm" style="display:none;">
                 <h2>Delete SKU</h2>
                 <label for="deleteSkuCode">Enter SKU Code:</label>
-                <input type="text" id="deleteSkuCode">
-                <button class= "delete_btn" onclick="confirmDeleteSKU()">Delete SKU</button>
+                <input type="text" id="deleteSkuCode" placeholder="Enter SKU Code">
+                <button class= "delete_btn" onclick="confirmDelete()">Delete SKU</button>
                 <div id="warningMessage" style="display: none;"></div>
 
                 <!-- Confirmation Message -->
@@ -78,25 +77,43 @@
                     <p id="confirmationText"></p>
                     <button onclick="confirmDelete()">Confirm Delete</button>
                     <div id="successMessage" style="display: none;"></div>
-                    <button onclick="cancelDelete()">Cancel</button>
                 </div>
-            
+            </div> 
+            <!-- Add this section for the Order List -->
+            <div id="orderPortal" style="display: none;">
+                <h2>Order List</h2>
+                <label for="orderSearch">Search ordered SKU:</label>
+                <div class="inputBar"><input type="text" id="orderSearch" placeholder="Enter SKU Code"></div>
+                <button onclick="searchAndUpdateOrder()">Add in Order List</button>
+                <button onclick="clearOrderList()">Clear Order List</button>
+                <button onclick="printOrderList()">Print Order List</button>
+
+                <!-- Table structure for the Order List -->
+                <div id="orderTableContainer">
+                    <table id="orderTable">
+                    </table>
+                </div>
+            </div>           
         </div>
     </div>
-    <div class="lower-half" id="lowerHalf">
-        <div>
+    <div class="lower-half" id="lowerHalf"> 
+        <!-- Update the existing Inventory Search bar -->
+        <div id="inventorySearch" class="search-container">
             <h2>Inventory</h2>
-            <input type="text" id="searchSkuCode" placeholder="Enter SKU Code">
+
+            <label for="inventorySkuCode">Enter SKU Code:</label>
+            <div class="inputBar"><input type="text" id="inventorySkuCode" class="styled-input" placeholder="Enter SKU Code"></div>
             <button onclick="searchInventory()">Search</button>
-            <div id="searchResult"></div>
-            <!-- Display the SKU data table here -->
-            <br>
+            <div id="searchResult" class="search-result"></div>
         </div>
 
+        <br>
         <div id="InventoryTable">
             <button id="showInventoryButton" onclick="showInventory()">Show FULL Inventory -></button>
         </div>
-        <br>    
+        <br>
+        
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
