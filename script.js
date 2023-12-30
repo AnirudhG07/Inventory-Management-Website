@@ -327,7 +327,7 @@ function openPopup() {
   
   function checkPassword() {
     const password = document.getElementById('password').value;
-    const correctPassword = 'govinda1234'; // Replace with your actual password
+    const correctPassword = 'Your_Password'; // Replace with your actual password
   
     if (password === correctPassword) {
       // Remove the popup from the document
