@@ -1,9 +1,10 @@
 # Inventory-Updation-Website
-This is a front-end project made by me for a company called Shemeka Industies Pvt. Ltd. This is an Inventory Management system, which the company can use to manage their Inventory online, without the use of any online database.
+This is a front-end project made by me for a company called `Shemeka Industies Pvt. Ltd.` This is an Inventory Management system, which the company can use to manage their Inventory online, without the use of any online database.
 # Project Details
-The task was to create a website (private server) where they could add SKU's, Quantity and Bin Location of their product, delete them, or update them, and Order Portal to handle orders, where the could add items in a list which they can PRINT and automatically remove items from the Inventory. To maintain the data, inbuilt CSV features have been made to upload, edit and download Inventroy as CSV. The website for supposed to be easy to read and use, for the employees and the managers.
+The task was to create a website (private server) where they could add SKU's, Quantity and Bin Location of their product, delete them, or update them, and Order Portal to handle orders, where the could add items in a list which they can PRINT and automatically remove items from the Inventory.<br>
+To maintain the data, inbuilt CSV features have been made to upload, edit and download Inventroy as CSV. The website for supposed to be easy to read and use, for the employees and the managers.
 <br> 
-A security System has been added to ensure, anytime one enters, has to put in password, or even after refresh.
+A Security System has been added to ensure, anytime one enters, has to put in password, or even after refresh.
 <br>
 # The look of the Main Page
 
@@ -21,5 +22,18 @@ A security System has been added to ensure, anytime one enters, has to put in pa
 <br>
 This website is can be used for various purposes such as data management system, profile maker(with more use of CSS), etc.
 
-<h2> This is a JavaScript, HTML, CSS based website, without use of any online database.</h2>
-<h3> Open Source for any company to use</h3>
+## This is a JavaScript, HTML, CSS based website, without use of any online database.
+# Open Source for any company to use
+
+**How to use-**
+
+```bash
+$ git clone https://github.com/AnirudhG07/Inventory-Management-Website.git
+```
+1) git clone the repository<br>
+2) From these files, upload them on hosting website. <br>
+3) Upload logo png file. Put your Company name and Security password in all files. To find, just search `COMPANY NAME` and `Your_Password`  using `cmd F`(MacOS) or `Ctrl F`(Windows).<br>
+4) Style website according to your taste, upload a different background image in CSS file in `.body`.
+<br>
+You are set to go! 
+
