@@ -142,6 +142,7 @@ button:hover {
     color: white;
     width: 10%;
 }
+
 .security_msg{
     border-top: 2px solid black;
     color: rgb(58, 8, 8);
@@ -181,3 +182,8 @@ button:hover {
 #orderTable th {
     background-color: #efefef;
 }
+.dataUpdation{
+    border-top: 2px solid black;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
