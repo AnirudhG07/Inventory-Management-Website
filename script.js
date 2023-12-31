@@ -5,10 +5,10 @@ let skuData = JSON.parse(localStorage.getItem('skuData')) || [];
 function updateLocalStorage() {
     localStorage.setItem('skuData', JSON.stringify(skuData));
 }
-if (performance.navigation.type === 1) {
-  //Redirect to the security page
+ if (performance.navigation.type === 1) {
+   // Redirect to the security page
     window.location.href = "security_web.html"; // Replace with the actual path
-}
+ }
 function toggleSection(sectionId) {
     const section = document.getElementById(sectionId);
     section.classList.toggle('active');
@@ -36,35 +36,13 @@ function hideForms() {
     document.getElementById('warningMessage').style.display = 'none';
 }
 
-function showSuccessMessage() {
-    const successMessage = document.getElementById('successMessage');
-    successMessage.textContent = message;
-    successMessage.style.display = 'block'; // Or any other way to make it visible
-
-  // Optionally, clear the message after a few seconds:
-    setTimeout(() => {
-        successMessage.style.display = 'none';
-    }, 3000); // Delay in milliseconds
-}
-
-
-function showWarningMessage(message) {
-    const warningMessage = document.getElementById('warningMessage');
-    warningMessage.textContent = message;
-    warningMessage.style.display = 'block';
-  // ... (similarly clear the message after a delay if needed)
-    setTimeout(() => {
-        successMessage.style.display = 'none';
-    }, 3000); // Delay in milliseconds
-}
-
 function addSKU() {
     const skuCode = document.getElementById('skuCode').value; // Get the SKU code in the form of a string
     const quantity = document.getElementById('quantity').value;
     const binNumber = document.getElementById('binNumber').value;
     if (skuCode && quantity && binNumber) { // Check if all fields are filled
         if (skuData.find(sku => sku.skuCode === skuCode)) { // Check if SKU already exists
-            showWarningMessage('SKU already exists');
+            alert('SKU already exists');
             return;
         }
         
@@ -72,9 +50,8 @@ function addSKU() {
 
         alert('SKU added successfully');
         skuData.push(newSKU);
-        //updateLocalStorage();
+        updateLocalStorage();
         sendDataToServer(skuCode, quantity, binNumber, false);
-        displaySKUs();
         hideForms();
 
     }
@@ -87,31 +64,6 @@ function hideWarningMessage() {
     document.getElementById('warningMessage').style.display = 'none';
     document.getElementById('warningMessage').textContent = 'warningMessage';
 }
-
-function sendDataToServer(sku, quantity, binNumber, dlete) {
-    var data = {
-        sku: sku,
-        quantity: quantity,
-        binNumber: binNumber,
-        delete: dlete
-    };
-
-    fetch('default.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-}
-
 
 function fetchAndUpdateSKU() {
     const updateSkuCode = document.getElementById('updateSkuCode').value;
@@ -170,29 +122,21 @@ function updateSKU() {
 
         skuToUpdate.quantity = initialQuantity + stockIn - stockOut;
         if (skuToUpdate.quantity < 0) {
-            alert('Stock cannot be less than 0. Please check the stock in and stock out values. STOCK SET TO 0.');
+            alert('Stock cannot be less than 0. Please check the stock in and stock out values. STOCK SET TO 0.')
             skuToUpdate.quantity = 0;
         }
-        alert('SKU updated successfully');
+        alert('SKU updated successfully')
         skuToUpdate.binNumber = updateBinNumberInput.value;
-        //updateLocalStorage();
+        updateLocalStorage();
         sendDataToServer(updateSkuCode, skuToUpdate.quantity, skuToUpdate.binNumber, false);
-        displaySKUs();
         hideForms();
 
-        const timestamp = new Date().toLocaleString();
-
-        // Show success alert
     } else {
         // SKU not found, display a message
-        showWarningMessage(`SKU ${updateSkuCode} not found. Please add it.`);
+        alert('SKU does not exist. Please ADD SKU.');
     }
 }
 
-function showWarningMessage(message) {
-    // Display a warning message
-    document.getElementById('warningMessage').innerHTML = message;
-}
 
 function confirmDelete() {
     const deleteSkuCode = document.getElementById('deleteSkuCode').value; // Get the SKU code to delete
@@ -207,17 +151,27 @@ function confirmDelete() {
 
             alert('SKU deleted successfully');
             skuData.splice(skuIndexToDelete, 1); 
-            //updateLocalStorage();
+            updateLocalStorage();
             sendDataToServer(deleteSkuCode, 0, 0, true); 
-            displaySKUs(); 
             hideForms(); // 
+
+            document.getElementById('confirmationMessage').style.display = 'none';
         }
     } else {
         // SKU not found, display a message
         alert('SKU does not exist');
     }
 }
-
+function deleteAllInventory() {
+    const confirmDeleteAll = confirm("Are you sure you want to delete all inventory items?");
+    
+    if (confirmDeleteAll) {
+        localStorage.removeItem('skuData'); // Clear all inventory data
+        alert('All inventory items deleted successfully');
+        window.location.reload();
+        // You may want to add additional logic or actions here if needed
+    }
+}
 
 let isInventoryVisible = false;
 
@@ -271,6 +225,7 @@ function showInventory() {
     isInventoryVisible = true; // Set visibility state to true
 }
 
+// Add this function to your script.js file
 function searchInventory() {
     const inventorySkuCode = document.getElementById('inventorySkuCode').value;
     const searchResultDiv = document.getElementById('searchResult');
@@ -318,6 +273,7 @@ function openPopup() {
     popup.style.borderRadius = '5px';
     popup.style.display = 'block';
   
+    // Add event listener for submit button
     document.getElementById('password').addEventListener('keyup', function(event) {
       if (event.key === 'Enter') {
         checkPassword();
@@ -327,7 +283,7 @@ function openPopup() {
   
   function checkPassword() {
     const password = document.getElementById('password').value;
-    const correctPassword = 'Your_Password'; // Replace with your actual password
+    const correctPassword = 'govinda1234'; // Replace with your actual password
   
     if (password === correctPassword) {
       // Remove the popup from the document
@@ -373,7 +329,7 @@ function displayOrderList(orderList) {
             <th>Bin Number</th>
         </tr>
     `;
-
+    
     // Populate the table with Order List data
     for (const order of orderList) {
         const row = orderTable.insertRow(-1);
@@ -451,6 +407,7 @@ function searchAndUpdateOrder() {
         alert('SKU not found. Please check the SKU code and try again.');
     }
 }
+
 function clearOrderList() {
     // Ask for confirmation
     const isConfirmed = confirm("Are you sure you want to clear the order list?");
@@ -462,14 +419,19 @@ function clearOrderList() {
         // Clear the corresponding data from local storage
         localStorage.removeItem('orderData');
     }
+    else{
+        return;
+    }
 }
 
+// Add this function to your script.js file
+// Add this updated function to your script.js file
 function printOrderList() {
     const orderTable = document.getElementById('orderTable');
     
     // Create a copy of the ORDER LIST table
     const clonedTable = orderTable.cloneNode(true);
-
+    
     const currentDate = new Date();
     const printDateRow = clonedTable.insertRow(0);
     const printDateCell = printDateRow.insertCell(0);
@@ -515,3 +477,70 @@ function printOrderList() {
     // Print the window
     printWindow.print();
 }
+
+function exportToCSV() {
+    confirmation= confirm("Are you sure you want to export the order list to CSV?");
+    if (!confirmation) {
+        return;
+    }
+    const skuData = JSON.parse(localStorage.getItem('skuData')) || [];
+  
+    // Create CSV content with header row
+    const csvContent =
+      "skuCode,quantity,binNumber\n" +
+      skuData.map(item => Object.values(item).join(',')).join('\n');
+  
+    // Create a Blob and trigger download
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const date = new Date().toLocaleDateString();
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `inventory${date}.csv`;
+    link.click();
+  }
+  
+function uploadCSV() {
+    const confirm_upload=confirm("Are you sure you want to upload the CSV file? This will clear existing inventory and add new inventory.");
+    if (confirm_upload) { // confirm_upload is true if the user clicked "OK"
+
+        const fileInput = document.getElementById('csvFileInput');
+        const file = fileInput.files[0];
+    
+        if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const csvData = e.target.result;
+            const skus = parseCSV(csvData);
+            updateInventory(skus);
+        };
+        reader.readAsText(file);
+        }
+    } else{
+        return;
+    }
+  }
+function parseCSV(csvData) {
+    const rows = csvData.split(/\r?\n/);
+    const headers = rows[0].split(',').map(header => header.trim()); // Extract and trim header row
+    const skus = [];
+
+    for (let i = 1; i < rows.length; i++) {
+        const rowData = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(value => value.trim()); // Split by comma, ignoring commas within quotes
+        const sku = {};
+
+        for (let j = 0; j < headers.length; j++) {
+            sku[headers[j]] = rowData[j];
+        }
+
+        skus.push(sku);
+    }
+
+    return skus;
+}
+
+  
+function updateInventory(skus) {
+    skuData = skuData.concat(skus); // Combine new SKUs with existing data
+    localStorage.setItem('skuData', JSON.stringify(skuData)); // Update local storage
+    alert('Inventory uploaded successfully');
+  }  
