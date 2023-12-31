@@ -283,7 +283,7 @@ function openPopup() {
   
   function checkPassword() {
     const password = document.getElementById('password').value;
-    const correctPassword = 'govinda1234'; // Replace with your actual password
+    const correctPassword = 'Your_Password'; // Replace with your actual password
   
     if (password === correctPassword) {
       // Remove the popup from the document
@@ -441,7 +441,7 @@ function printOrderList() {
     const companyNameRow = clonedTable.insertRow(0);
     const companyNameCell = companyNameRow.insertCell(0);
     companyNameCell.colSpan = clonedTable.rows[1].cells.length; // Span across all columns
-    companyNameCell.innerHTML = 'SHEMEKA INDUSTRIES PRIVATE LIMITED';
+    companyNameCell.innerHTML = 'COMPANY NAME PRIVATE LIMITED';
     companyNameCell.style.textAlign = 'center'; // Center-align the company name
     companyNameCell.style.size = '20px'; // Adjust as needed
 
