@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SKU-Updation</title>
     </head>
-    <body>
     <div class="header">
-        <img class="logo" src="zesteq_logo.png" alt="logo">
-        <h1 class="top_head1">SHEMEKA INDUSTRIES PRIVATE LIMITED<br>Inventory Management System</h1> 
+<body>
+
+        <img class="logo" src="zesteq_logo.png" alt="logo" class="logo">
+        <h1 class="top_head1">COMPANY NAME PRIVATE LIMITED<br>Inventory Management System</h1> 
     </div>
     <br><br>
     <div class="upper-half" id="upperHalf">
@@ -70,6 +71,7 @@
                 <label for="deleteSkuCode">Enter SKU Code:</label>
                 <input type="text" id="deleteSkuCode" placeholder="Enter SKU Code">
                 <button class= "delete_btn" onclick="confirmDelete()">Delete SKU</button>
+                <button class="delete_btn" onclick="deleteAllInventory()">Delete All Inventory</button>
                 <div id="warningMessage" style="display: none;"></div>
 
                 <!-- Confirmation Message -->
@@ -97,8 +99,10 @@
         </div>
     </div>
     <div class="lower-half" id="lowerHalf"> 
+
         <!-- Update the existing Inventory Search bar -->
         <div id="inventorySearch" class="search-container">
+
             <h2>Inventory</h2>
 
             <label for="inventorySkuCode">Enter SKU Code:</label>
@@ -106,14 +110,29 @@
             <button onclick="searchInventory()">Search</button>
             <div id="searchResult" class="search-result"></div>
         </div>
-
-        <br>
         <div id="InventoryTable">
+            <br>
             <button id="showInventoryButton" onclick="showInventory()">Show FULL Inventory -></button>
         </div>
+        <div id="InventoryUpdation">
         <br>
-        
+        <div class="dataUpdation">
+            <h2>Download CSV of data <br> Upload Csv file to show in the Inventory</h2>
+        </div> 
+       
+            <div class="dataUpdation">
+                <div class="exportCsv">
+                    <br>
+                    <button onclick="exportToCSV()">Export Inventory to CSV</button>
+                </div>
+                <br>
+                <input type="file" id="csvFileInput" accept=".csv">
+                <button onclick="uploadCSV()">Upload CSV</button>
+            </div>
+        </div>
     </div>
+    
+
     <script src="script.js"></script>
 </body>
 </html>
